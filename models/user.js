@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-
 const userSchema = Schema({
   password: {
     type: String,
@@ -26,9 +25,17 @@ const userSchema = Schema({
   avatarURL: {
     type: String,
   },
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    required: [true, "Verify token is required"],
+  },
 });
 
-const User = model("user", userSchema);
+const User = model("users", userSchema);
 
 module.exports = {
   User,
